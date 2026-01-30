@@ -12,7 +12,7 @@ public class GoogleTestService {
 
     public void performSearch(SeleniumUtils utils, String term) {
         utils.navigateTo("https://www.google.com");
-        try { Thread.sleep(1000); } catch (InterruptedException ignored) {}
+        try { Thread.sleep(3000); } catch (InterruptedException ignored) {}
         WebElement input = utils.getWebDriver().findElement(org.openqa.selenium.By.name("q"));
         input.sendKeys(term);
         input.submit();

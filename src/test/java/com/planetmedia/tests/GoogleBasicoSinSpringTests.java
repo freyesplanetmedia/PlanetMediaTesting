@@ -24,7 +24,7 @@ public class GoogleBasicoSinSpringTests {
     public void pruebaBuscar() throws InterruptedException {
         WebDriver driver = ChromeExtension.getDriver();
         driver.get("https://www.google.com");
-        try { Thread.sleep(1000); } catch (InterruptedException ignored) {}
+        try { Thread.sleep(3000); } catch (InterruptedException ignored) {}
         var input = driver.findElement(By.name("q"));
         input.sendKeys("Selenium WebDriver");
         input.submit();
