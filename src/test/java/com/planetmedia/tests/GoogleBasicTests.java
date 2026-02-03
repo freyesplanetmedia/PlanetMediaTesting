@@ -49,12 +49,12 @@ public class GoogleBasicTests {
         this.seleniumUtils = new SeleniumUtils(webDriver);
     }
 
-   /* @Test
+    @Test
     public void testNavegarAGoogle() {
         seleniumUtils.navigateTo("https://www.google.com");
         String title = seleniumUtils.getPageTitle();
         assert title.toLowerCase().contains("google");
-    }*/
+    }
 
    /* @Test   
     public void testBuscarEnGoogle() {
