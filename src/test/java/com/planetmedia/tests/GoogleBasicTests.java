@@ -43,12 +43,12 @@ public class GoogleBasicTests {
     @Autowired
     private WebDriver webDriver;
 
-    @BeforeEach
+    /*  @BeforeEach
     public void setUp() {
         System.out.println("[GoogleBasicTests] setUp - webdriver: " + webDriver);
         this.seleniumUtils = new SeleniumUtils(webDriver);
     }
-
+*/
    /* @Test
     public void testNavegarAGoogle() {
         seleniumUtils.navigateTo("https://www.google.com");
