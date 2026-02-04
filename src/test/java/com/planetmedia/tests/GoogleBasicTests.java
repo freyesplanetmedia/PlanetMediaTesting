@@ -77,6 +77,7 @@ public class GoogleBasicTests {
             assert containsTerm;
         }
     }*/
+    // este metodo es para poder sacar capturas de pantalla asi como asignarles un destino deseado
     public void tomarScreenshot(String rutaDestino) {
         try {
             File screenshot = ((TakesScreenshot) seleniumUtils.getWebDriver()).getScreenshotAs(OutputType.FILE);
@@ -88,7 +89,7 @@ public class GoogleBasicTests {
         }
     }
 
-    //QUE ETSOY HACIENDO:ESTAMOS DECLARANDO 
+        //se navega a la url y se realiza la siguiente lista de acciones
   
     @Test
     public void testInicio()throws InterruptedException, UnsupportedFlavorException, IOException {
@@ -121,20 +122,16 @@ public class GoogleBasicTests {
         Thread.sleep(5000);
         tomarScreenshot("C:/Users/Dell/Documents/Capturas_Test_Pruebas/captura3.png");
         
-        /*WebElement copiarIcon = seleniumUtils.getWebDriver().findElement(By.cssSelector("i.fa-copy"));
-        copiarIcon.click();
-        System.out.println("[Acción] Se hizo clic en el ícono 'Copiar'");*/
-
         Thread.sleep(4000);
-        
+        //busca el enlace que aparece en el modal emergente
         WebDriverWait wait = new WebDriverWait(seleniumUtils.getWebDriver(), Duration.ofSeconds(10));
         WebElement inputEnlace = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("enlace")));
         Thread.sleep(4000);
-   
+        //se obtiene el valor del input que contiena a la URL
         String urlCopiada = inputEnlace.getAttribute("value");
         System.out.println("[Acción] URL obtenida del input: " + urlCopiada);
         Thread.sleep(4000);
-       
+        //se da clic en el boton de cerrar
         WebElement cerrarBtn = seleniumUtils.getWebDriver().findElement(By.cssSelector("button.btnSubmit"));
         cerrarBtn.click();
         System.out.println("[Acción] Se hizo clic en el botón 'Cerrar'");
