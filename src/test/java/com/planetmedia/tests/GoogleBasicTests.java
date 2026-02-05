@@ -1,7 +1,7 @@
 package com.planetmedia.tests;
 import com.planetmedia.service.GoogleTestService;
 import com.planetmedia.utils.SeleniumUtils;
-//import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
@@ -23,6 +23,9 @@ import java.awt.datatransfer.UnsupportedFlavorException;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.MethodOrderer;
 
 
 
@@ -33,6 +36,7 @@ import java.time.Duration;
  */
 @SpringBootTest
 @Import(TestWebDriverConfig.class)
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class GoogleBasicTests {
 
     @Autowired
@@ -43,16 +47,15 @@ public class GoogleBasicTests {
     @Autowired
     private WebDriver webDriver;
 
-    /*  @BeforeEach
+      @BeforeEach
     public void setUp() {
         System.out.println("[GoogleBasicTests] setUp - webdriver: " + webDriver);
         this.seleniumUtils = new SeleniumUtils(webDriver);
     }
-<<<<<<< HEAD
-
+/*
     @Test
-=======
-*/
+
+
    /* @Test
 >>>>>>> ee3de5209912166fad787c10fcc5ffd83e9fefa3
     public void testNavegarAGoogle() {
@@ -82,6 +85,7 @@ public class GoogleBasicTests {
             assert containsTerm;
         }
     }*/
+      
     // este metodo es para poder sacar capturas de pantalla asi como asignarles un destino deseado
     public void tomarScreenshot(String rutaDestino) {
         try {
@@ -97,6 +101,7 @@ public class GoogleBasicTests {
         //se navega a la url y se realiza la siguiente lista de acciones
   
     @Test
+    @Order(1)
     public void testInicio()throws InterruptedException, UnsupportedFlavorException, IOException {
     	try {
 
@@ -112,6 +117,7 @@ public class GoogleBasicTests {
         Thread.sleep(8000); 
         tomarScreenshot("C:/Users/Dell/Documents/Capturas_Test_Pruebas/captura1.png");
         
+        //selecciona la seccion subastas por finalizar
         WebElement porfinalizar = seleniumUtils.getWebDriver().findElement(By.xpath("//a[@href='/PorFinalizar']"));
         porfinalizar.click();
         System.out.println("[Acción] Se hizo clic en el botón 'Por finalizar'");
@@ -132,18 +138,22 @@ public class GoogleBasicTests {
         WebDriverWait wait = new WebDriverWait(seleniumUtils.getWebDriver(), Duration.ofSeconds(10));
         WebElement inputEnlace = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("enlace")));
         Thread.sleep(4000);
+        
         //se obtiene el valor del input que contiena a la URL
         String urlCopiada = inputEnlace.getAttribute("value");
         System.out.println("[Acción] URL obtenida del input: " + urlCopiada);
         Thread.sleep(4000);
+        
         //se da clic en el boton de cerrar
         WebElement cerrarBtn = seleniumUtils.getWebDriver().findElement(By.cssSelector("button.btnSubmit"));
         cerrarBtn.click();
         System.out.println("[Acción] Se hizo clic en el botón 'Cerrar'");
         Thread.sleep(3000);
+        
         //se abre nueva pestaña
         ((JavascriptExecutor) seleniumUtils.getWebDriver()).executeScript("window.open();");
         tomarScreenshot("C:/Users/Dell/Documents/Capturas_Test_Pruebas/captura4.png");
+        
         //se enfoca en la nueva pentaña que se abre 
         ArrayList<String> tabs = new ArrayList<>(seleniumUtils.getWebDriver().getWindowHandles());
         seleniumUtils.getWebDriver().switchTo().window(tabs.get(tabs.size() - 1));
@@ -163,10 +173,61 @@ public class GoogleBasicTests {
 
     }
 
+    @Test
+    @Order(2)
+    public void testProbarUbicacion()throws InterruptedException, UnsupportedFlavorException, IOException {
+    	try {
+    		//se navega hacia el sitio web y se da clic en la seccion de inicio 
+            seleniumUtils.navigateTo("https://gmsubastas-uat-cwgychg6c7g6c5hp.northeurope-01.azurewebsites.net/login");
+            System.out.println("[Acción] Se ingresó al sitio de Subastas");
 
-   /* @AfterEach
+            WebElement inicioSpan = seleniumUtils.getWebDriver().findElement(By.xpath("//span[text()='Inicio']"));
+            inicioSpan.click();
+            
+            //se toma evidencia obteniendo el titulo de la pagina y imprimiendolo 
+            System.out.println("[Acción] Se hizo clic en el botón 'Inicio'");
+            String title = seleniumUtils.getPageTitle();
+            System.out.println("[Resultado] El título de la página después de login es: " + title); 	
+            
+            Thread.sleep(4000);
+            tomarScreenshot("C:/Users/Dell/Documents/Capturas_test_Ubicacion/captura1.png");
+            
+             //selecciona la seccion subastas nuevas
+            WebElement porfinalizar = seleniumUtils.getWebDriver().findElement(By.xpath("//a[@href='/Nuevas']"));
+            porfinalizar.click();
+            System.out.println("[Acción] Se hizo clic en el botón 'Nuevas'");
+            tomarScreenshot("C:/Users/Dell/Documents/Capturas_test_Ubicacion/captura2.png");
+            Thread.sleep(4000);
+            
+            // Scroll hasta el elemento
+            WebElement ubicacionIcon = seleniumUtils.getWebDriver().findElement(By.cssSelector("img[alt='Ubicación']"));
+            ((JavascriptExecutor) seleniumUtils.getWebDriver()).executeScript("arguments[0].scrollIntoView(true);", ubicacionIcon);
+            
+            Thread.sleep(2000);
+            ubicacionIcon.click();
+            System.out.println("[Acción] Se hizo clic en el botón 'Ubicacion");
+            tomarScreenshot("C:/Users/Dell/Documents/Capturas_test_Ubicacion/captura3.png");
+            Thread.sleep(8000);
+
+            ArrayList<String> tabs = new ArrayList<>(seleniumUtils.getWebDriver().getWindowHandles());
+            seleniumUtils.getWebDriver().switchTo().window(tabs.get(tabs.size() - 1));
+            Thread.sleep(5000); 
+            
+            
+          
+    	} catch (Exception e) {
+            // Captura cualquier error en el flujo completo
+            e.printStackTrace();
+            System.out.println("[Error] Ocurrió un problema en el test: " + e.getMessage());
+            tomarScreenshot("C:/Users/Dell/Documents/Capturas_Test_Pruebas/error.png");
+        }
+
+    }
+
+
+    @AfterEach
     public void tearDown() {
         seleniumUtils.quitDriver();
-   }*/
+   }
     
 }
