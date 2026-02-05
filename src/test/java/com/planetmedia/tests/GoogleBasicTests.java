@@ -52,10 +52,18 @@ public class GoogleBasicTests {
         System.out.println("[GoogleBasicTests] setUp - webdriver: " + webDriver);
         this.seleniumUtils = new SeleniumUtils(webDriver);
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3300e85ceaa93090be852cb715a4a485cb962e63
 /*
     @Test
 
 
+<<<<<<< HEAD
+=======
+>>>>>>> 91c39a8 (Ajuste en test, se validad URL y Liga de las card)
+>>>>>>> 3300e85ceaa93090be852cb715a4a485cb962e63
    /* @Test
 >>>>>>> ee3de5209912166fad787c10fcc5ffd83e9fefa3
     public void testNavegarAGoogle() {

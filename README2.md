@@ -1,23 +1,36 @@
-# PlanetMediaTesting
+#Guía para ejecutar los tests
 
-Proyecto de ejemplo para pruebas automatizadas con Selenium + Spring Boot.
+#1. Requisitos previos  
+- Tener instalado Java 17 o la versión que uses en tu proyecto.  
+- Tener instalado Maven y configurado en tu PATH.  
+- Tener instalado Google Chrome en tu máquina.  
+- Tener disponible ChromeDriver compatible con tu versión de Chrome. Si usas WebDriverManager, se descarga automáticamente.
 
-Estructura
-- src/main/java: aplicacion Spring Boot minima
-- src/test/java: pruebas, utilidades y configuracion de WebDriver
+#2. Clonar el repositorio  
+git clone `https://github.com/freyesplanetmedia/PlanetMediaTesting.git` [(github.com in Bing)](https://www.bing.com/search?q="https%3A%2F%2Fgithub.com%2Ffreyesplanetmedia%2FPlanetMediaTesting.git")  
+cd PlanetMediaTesting  
 
-Como ejecutar
-1) Compilar:
-```powershell
-mvn -DskipTests=true package
-```
+#3. Compilar el proyecto  
+mvn clean install  
 
-2) Ejecutar tests (visibles, no headless):
-```powershell
-mvn -Dselenium.headless=false test
-```
+#4. Ejecutar los tests  
+Opción A: Ejecutar todos los tests  
+mvn test  
 
-Notas
-- El proyecto usa WebDriverManager para descargar chromedriver automaticamente.
-- Si ejecutas desde IDE, asegurate de pasar `-Dselenium.headless=false` en VM options para ver el navegador.
-- Si Chrome no esta en la ruta estandar, ajusta `WebDriverFactory` para usar `options.setBinary("C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe")`.
+Opción B: Ejecutar un test específico, por ejemplo GoogleBasicTests  
+mvn -Dtest=GoogleBasicTests test  
+
+#5. Resultados  
+- Los logs se muestran en la consola.  
+- Las capturas de pantalla se guardan en la carpeta definida en tu código, por ejemplo C:/Users/Dell/Documents/Capturas_test_Ubicacion/.  
+- Los reportes de JUnit y Maven se generan en la carpeta target/surefire-reports/.  
+
+#6. Notas adicionales  
+- El navegador se abre maximizado gracias a la configuración en TestWebDriverConfig.  
+- Los tests están ordenados con la anotación @Order, por lo que se ejecutan en la secuencia definida.  
+- Si ejecutas en otra máquina, ajusta las rutas de las capturas de pantalla en tu clase SeleniumUtils.  
+
+
+
+
+

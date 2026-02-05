@@ -1,15 +1,9 @@
 package com.planetmedia.config;
-<<<<<<< HEAD
-=======
 
 
->>>>>>> 3300e85ceaa93090be852cb715a4a485cb962e63
 import org.openqa.selenium.WebDriver;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-
 
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
