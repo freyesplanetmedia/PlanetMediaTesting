@@ -1,10 +1,7 @@
 package com.planetmedia.config;
-
-
 import org.openqa.selenium.WebDriver;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
-
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
