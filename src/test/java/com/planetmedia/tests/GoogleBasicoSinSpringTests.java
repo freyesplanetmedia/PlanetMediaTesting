@@ -1,5 +1,4 @@
 package com.planetmedia.tests;
-
 import com.planetmedia.testing.ChromeExtension;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

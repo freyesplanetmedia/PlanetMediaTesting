@@ -16,7 +16,6 @@ mvn clean install
 #4. Ejecutar los tests  
 Opción A: Ejecutar todos los tests  
 mvn test  
-
 Opción B: Ejecutar un test específico, por ejemplo GoogleBasicTests  
 mvn -Dtest=GoogleBasicTests test  
 
@@ -30,7 +29,7 @@ mvn -Dtest=GoogleBasicTests test
 - Los tests están ordenados con la anotación @Order, por lo que se ejecutan en la secuencia definida.  
 - Si ejecutas en otra máquina, ajusta las rutas de las capturas de pantalla en tu clase SeleniumUtils.  
 
-
+-Esta es la ultima version
 
 
 
