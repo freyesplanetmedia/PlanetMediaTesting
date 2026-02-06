@@ -1,6 +1,6 @@
 com\planetmedia\tests\GoogleBasicTests.class
 com\planetmedia\utils\SeleniumUtils.class
-com\planetmedia\service\GoogleTestService.class
 com\planetmedia\tests\GoogleBasicoSinSpringTests.class
+com\planetmedia\service\GoogleTestService.class
 com\planetmedia\config\TestWebDriverConfig.class
 com\planetmedia\testing\ChromeExtension.class
