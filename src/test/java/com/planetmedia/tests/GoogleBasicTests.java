@@ -28,9 +28,6 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.MethodOrderer;
 
 
-
-
-
 /**
  * Pruebas de integracion usando SpringBootTest y un bean WebDriver compartido.
  */
@@ -53,17 +50,17 @@ public class GoogleBasicTests {
         this.seleniumUtils = new SeleniumUtils(webDriver);
     }
 
+
 /*
     @Test
 
-
->>>>>>> 91c39a8 (Ajuste en test, se validad URL y Liga de las card)
    /* @Test
+>>>>>>> ee3de5209912166fad787c10fcc5ffd83e9fefa3
     public void testNavegarAGoogle() {
         seleniumUtils.navigateTo("https://www.google.com");
         String title = seleniumUtils.getPageTitle();
         assert title.toLowerCase().contains("google");
-    }*/
+    }
 
    /* @Test   
     public void testBuscarEnGoogle() {

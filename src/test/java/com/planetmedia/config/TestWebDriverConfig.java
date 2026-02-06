@@ -1,15 +1,14 @@
 package com.planetmedia.config;
-
-
 import org.openqa.selenium.WebDriver;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
-
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 
-/**
+/*
  * Configuracion de prueba proporcionada a SpringBootTest para exponer un bean WebDriver.
  */
 @TestConfiguration
